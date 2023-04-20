@@ -135,6 +135,7 @@ public class SpotifyRepository {
         List<Playlist> playlistList = userPlaylistMap.get(user);
         playlistList.add(playlist);
         userPlaylistMap.put(user,playlistList);
+        playlists.add(playlist);
         return playlist;
     }
 
@@ -170,6 +171,7 @@ public class SpotifyRepository {
         List<Playlist> playlistList = userPlaylistMap.get(user);
         playlistList.add(playlist);
         userPlaylistMap.put(user,playlistList);
+        playlists.add(playlist);
         return playlist;
     }
 
@@ -192,7 +194,9 @@ public class SpotifyRepository {
 
     //Function to find playlist
     public Playlist doesPlaylistExist(String playlistTitle){
+
         for(Playlist playlist: playlists){
+
             if(playlist.getTitle().equals(playlistTitle)){
                 return playlist;
             }
