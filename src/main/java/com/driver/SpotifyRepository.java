@@ -157,7 +157,7 @@ public class SpotifyRepository {
         Playlist playlist = new Playlist(title);
         List<Song> songList = new ArrayList<>();
         for(Song song: songs){
-            if(songList.contains(song.getTitle())){
+            if(songTitles.contains(song.getTitle())){
                 songList.add(song);
             }
         }
