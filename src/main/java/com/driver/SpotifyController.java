@@ -34,7 +34,7 @@ public class SpotifyController {
     }
 
     @PostMapping("/add-song")
-    public String createSong(String title, String albumName, int length) throws Exception{
+    public String createSong(@RequestParam("title") String title, @RequestParam("albumName") String albumName,@RequestParam("length") int length) throws Exception{
         //If the album does not exist in database, throw "Album does not exist" exception
         //Create and add the song to respective album
         spotifyService.createSong(title,albumName,length);
@@ -42,7 +42,7 @@ public class SpotifyController {
     }
 
     @PostMapping("/add-playlist-on-length")
-    public String createPlaylistOnLength(String mobile, String title, int length) throws Exception{
+    public String createPlaylistOnLength(@RequestParam("mobile") String mobile, @RequestParam("title") String title, @RequestParam("length") int length) throws Exception{
         //Create a playlist with given title and add all songs having the given length in the database to that playlist
         //The creater of the playlist will be the given user and will also be the only listener at the time of playlist creation
         //If the user does not exist, throw "User does not exist" exception
@@ -51,7 +51,7 @@ public class SpotifyController {
     }
 
     @PostMapping("/add-playlist-on-name")
-    public String createPlaylistOnName(String mobile, String title, List<String> songTitles) throws Exception{
+    public String createPlaylistOnName(@RequestParam("mobile") String mobile, @RequestParam("title") String title, @RequestParam("songTitles") List<String> songTitles) throws Exception{
         //Create a playlist with given title and add all songs having the given titles in the database to that playlist
         //The creater of the playlist will be the given user and will also be the only listener at the time of playlist creation
         //If the user does not exist, throw "User does not exist" exception
@@ -60,7 +60,7 @@ public class SpotifyController {
     }
 
     @PutMapping("/find-playlist")
-    public String findPlaylist(String mobile, String playlistTitle) throws Exception{
+    public String findPlaylist(@RequestParam("mobile") String mobile, @RequestParam("playlistTitle") String playlistTitle) throws Exception{
         //Find the playlist with given title and add user as listener of that playlist and update user accordingly
         //If the user is creater or already a listener, do nothing
         //If the user does not exist, throw "User does not exist" exception
@@ -71,7 +71,7 @@ public class SpotifyController {
     }
 
     @PutMapping("/like-song")
-    public String likeSong(String mobile, String songTitle) throws Exception{
+    public String likeSong(@RequestParam("mobile") String mobile, @RequestParam("songTitle") String songTitle) throws Exception{
         //The user likes the given song. The corresponding artist of the song gets auto-liked
         //A song can be liked by a user only once. If a user tried to like a song multiple times, do nothing
         //However, an artist can indirectly have multiple likes from a user, if the user has liked multiple songs of that artist.
