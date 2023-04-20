@@ -187,6 +187,9 @@ public class SpotifyRepository {
         List<User> userList = playlistListenerMap.get(playlist);
         if(!userList.contains(user)){
             userList.add(user);
+            List<Playlist> playlistList = userPlaylistMap.get(user);
+            playlistList.add(playlist);
+            userPlaylistMap.put(user,playlistList);
         }
         playlistListenerMap.put(playlist,userList);
         return playlist;
